@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
 
 	// Open the file for writing.
 	sprintf(filename, "%s.h", argv[1]);
-	out = fopen(filename, "wb");
+	out = fopen(filename, "a");
 
 	// Write out the head of the function comment.
 	fputs("/**\n * Function containing text \"", out);
@@ -94,7 +94,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	// Write the tail.
-	fputs("}\n", out);
+	fputs("}\n\n", out);
 
 	// Self explanatory.
 	_aligned_free(strInBuf);
