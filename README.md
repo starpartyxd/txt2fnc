@@ -1,11 +1,8 @@
 txt2fnc
 =======
-This tool was created in my spare time for personal purposes. It allows you to enter text and create a function based off of said text in 
-reverse byte order for use in ARM C/C++ development.
+This tool was created in my spare time. It allows you to enter text and create a function based off of said text in reverse byte order for use in ARM C/C++ development.
 
-Compile it, enter a function name and some text. A %.h file will be created to be used in your program based on what you entered. In the event
-that you are unsure of if the text you entered properly is what you want, a custom comment of said text is created above the function for easy
-reference.
+Compile it, enter a function name and some text. A ".h" file will be created to be used in your program based on what you entered. In the event that you are unsure of if the text you entered properly is what you want, a custom comment of said text is created above the function for easy reference.
 
 Example 1
 =========
