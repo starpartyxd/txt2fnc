@@ -25,6 +25,7 @@
 
 int main(int argc, char *argv[]) {
 	int i = 0;
+	int blocks = 0;
 	int strSize = 0;
 	char *strInBuf = NULL;
 	FILE *out = NULL;
@@ -74,7 +75,7 @@ int main(int argc, char *argv[]) {
 
 	// Allocate memory for the strings and finally concatenate them
 	// after clearing memory in case of extra garbage.
-	strInBuf = (char*) _aligned_malloc(strSize, 8);
+	strInBuf = (char*) _aligned_malloc(strSize, 4);
 	memset(strInBuf, 0, sizeof(char));
 	for (i = ARGC_MAX; i < argc; i++) {
 		strcat(strInBuf, argv[i]);
@@ -83,13 +84,18 @@ int main(int argc, char *argv[]) {
 		}
 	}
 
-	// Write the appropriate data after checking the block size.
-	int blocks = (strSize / ALIGNED_SIZE) + 1;
+	// Make sure the string size is divisible by 4. If not, add another
+	// block to print the remaining data.
+	if (strSize % ALIGNED_SIZE == 0) {
+		blocks = strSize / ALIGNED_SIZE;
+	} else {
+		blocks = (strSize / ALIGNED_SIZE) + 1;
+	}
+
+	// Write the appropriate data based on the blocks given.
 	for (i = 0; i < blocks * ALIGNED_SIZE; i += ALIGNED_SIZE) {
 		fputs("\tasm ( \".long 0x", out);
-		fprintf(out, "%08X",
-				strInBuf[i] | strInBuf[i + 1] << 8 | strInBuf[i + 2] << 16
-						| strInBuf[i + 3] << 24);
+		fprintf(out, "%08X", strInBuf[i] | strInBuf[i + 1] << 8 | strInBuf[i + 2] << 16 | strInBuf[i + 3] << 24);
 		fputs("\" );\n", out);
 	}
 
