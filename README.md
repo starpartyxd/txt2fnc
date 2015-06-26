@@ -7,8 +7,6 @@ Compile it, enter a function name and some text. A %.h file will be created to b
 that you are unsure of if the text you entered properly is what you want, a custom comment of said text is created above the function for easy
 reference.
 
-Usage: %s <outfile> <function_name> <string>
-
 Example 1
 =========
 String: "Hello world!"
@@ -26,9 +24,7 @@ Arguments: txt2fnc out text_function Hello"   "World!
 
 What's next?
 ============
-Simply include your header file into your C program. Slap a char pointer to the function 
-"&function_name" and pass it to printf. Voila, you are now able to print functions as if 
-they were text without doing it by hand.
+Simply include your header file into your program. Slap a char pointer to the function address and pass it to printf. Voila, you are now able to print functions as if they were text without doing conversions by hand.
 
 This also has other uses, but it requires out-of-the box thinking. Good luck.
 
