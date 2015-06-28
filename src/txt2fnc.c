@@ -27,7 +27,6 @@ int main(int argc, char *argv[]) {
 	int i = 0;
 	int blocks = 0;
 	int strSize = 0;
-	int fileSize = 0;
 	char *strInBuf = NULL;
 	FILE *out = NULL;
 	char filename[1024];
@@ -41,15 +40,6 @@ int main(int argc, char *argv[]) {
 	// Open the file for writing.
 	sprintf(filename, "%s.h", argv[1]);
 	out = fopen(filename, "a");
-
-	// If file exists (size > 0) then don't increment by a new line.
-	fseek(out, 0, SEEK_END);
-	fileSize = ftell(out);
-	fseek(out, 0, SEEK_SET);
-
-	if (fileSize > 0) {
-		fputs("\n", out);
-	}
 
 	// Write out the head of the function comment.
 	fputs("/**\n * Function containing text \"", out);
@@ -105,14 +95,12 @@ int main(int argc, char *argv[]) {
 	// Write the appropriate data based on the blocks given.
 	for (i = 0; i < blocks * ALIGNED_SIZE; i += ALIGNED_SIZE) {
 		fputs("\tasm ( \".long 0x", out);
-		fprintf(out, "%08X",
-				strInBuf[i] | strInBuf[i + 1] << 8 | strInBuf[i + 2] << 16
-						| strInBuf[i + 3] << 24);
+		fprintf(out, "%08X", strInBuf[i] | strInBuf[i + 1] << 8 | strInBuf[i + 2] << 16 | strInBuf[i + 3] << 24);
 		fputs("\" );\n", out);
 	}
 
 	// Write the tail.
-	fputs("}\n", out);
+	fputs("}\n\n", out);
 
 	// Self explanatory.
 	_aligned_free(strInBuf);
