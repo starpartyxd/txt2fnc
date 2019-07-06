@@ -29,5 +29,8 @@ Included are two variations.
 		<textarea v-model="strIn" v-on:keyup="start" v-on:keydown="start"></textarea>
 		<span><p style="text-align:left">Output: <pre style="text-align:left;white-space: pre-line">{{{res}}}</pre></p>
 	</div>
+#
+#
+#
 
 ![Imgur](https://i.imgur.com/sSLioFw.gif)
