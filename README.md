@@ -30,4 +30,4 @@ Included are two variations.
 		<span><p style="text-align:left">Output: <pre style="text-align:left;white-space: pre-line">{{{res}}}</pre></p>
 	</div>
 
-![txt2fnc](https://i.imgur.com/sSLioFw.gifv)
+![Imgur](https://i.imgur.com/sSLioFw.gif)
