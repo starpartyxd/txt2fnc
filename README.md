@@ -3,6 +3,8 @@ txt2fnc is a tool allows a user to input text, which is then converted into reve
 
 In the event that you are unsure of the text you entered, a custom comment of said text is created above the function for easy reference in both versions. Once you've finalized what you want to use for your function, pass a pointer to it in order to display it. This tool is very much an example based on the post specified above and it is bare bones in terms of functionality.
 
+![Imgur](https://i.imgur.com/sSLioFw.gif)
+
 # Dependencies
 * vue.js 1.0.20 or later
 
@@ -29,5 +31,3 @@ Included are two variations.
 		<textarea v-model="strIn" v-on:keyup="start" v-on:keydown="start"></textarea>
 		<span><p style="text-align:left">Output: <pre style="text-align:left;white-space: pre-line">{{{res}}}</pre></p>
 	</div>
-\
-![Imgur](https://i.imgur.com/sSLioFw.gif)
