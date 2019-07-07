@@ -85,7 +85,7 @@ int main(int argc, char *argv[]) {
 
 	// Allocate memory for the strings and finally concatenate them
 	// after clearing memory in case of extra garbage.
-	strInBuf = (char*) _aligned_malloc(strSize, 4);
+	strInBuf = (char*) aligned_alloc(strSize, 4);
 	memset(strInBuf, 0, sizeof(char));
 	for (i = ARGC_MAX; i < argc; i++) {
 		strcat(strInBuf, argv[i]);
@@ -115,7 +115,7 @@ int main(int argc, char *argv[]) {
 	fputs("}\n", out);
 
 	// Self explanatory.
-	_aligned_free(strInBuf);
+	free(strInBuf);
 	fclose(out);
 	return EXIT_SUCCESS;
 }
